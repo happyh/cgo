@@ -40,16 +40,11 @@ func main() {
 	var a, b uint32
 	a = 1
 	b = 2
-	var t1, t2 *go_test_cpp.Uint32_t
-	t1 = (*go_test_cpp.Uint32_t)(unsafe.Pointer(&a))
-	t2 = (*go_test_cpp.Uint32_t)(unsafe.Pointer(&b))
-	fmt.Println("t1:", t1, ",t2:", t2)
-	test.Add(*t1, *t2)
-	/*res_ptr = test.Add(*t1, *t2).Swigcptr()
+	res_ptr = test.Add((go_test_cpp.SwigcptrUint32_t)(unsafe.Pointer(&a)), (go_test_cpp.SwigcptrUint32_t)(unsafe.Pointer(&b))).Swigcptr()
 	res = *(*int32)(unsafe.Pointer(res_ptr))
 	fmt.Println("Test success!", res)
 	go_test_cpp.Swig_free(res_ptr)
-	*/
+
 	time.Sleep(time.Second * 1)
 	fmt.Println("end")
 }
