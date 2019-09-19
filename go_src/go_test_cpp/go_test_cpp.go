@@ -47,28 +47,29 @@ import "C"
 import "unsafe"
 import _ "runtime/cgo"
 import "sync"
-import "fmt"
+
 
 type _ unsafe.Pointer
+
+
 
 var Swig_escape_always_false bool
 var Swig_escape_val interface{}
 
+
 type _swig_fnptr *byte
 type _swig_memberptr *byte
 
+
 type _ sync.Mutex
 
-type swig_gostring struct {
-	p uintptr
-	n int
-}
 
+type swig_gostring struct { p uintptr; n int }
 func swigCopyString(s string) string {
-	p := *(*swig_gostring)(unsafe.Pointer(&s))
-	r := string((*[0x7fffffff]byte)(unsafe.Pointer(p.p))[:p.n])
-	Swig_free(p.p)
-	return r
+  p := *(*swig_gostring)(unsafe.Pointer(&s))
+  r := string((*[0x7fffffff]byte)(unsafe.Pointer(p.p))[:p.n])
+  Swig_free(p.p)
+  return r
 }
 
 func Swig_free(arg1 uintptr) {
@@ -121,7 +122,7 @@ func (swig_p *_swig_DirectorICallback) Notify(s string) {
 func Swig_DirectorICallback_callback_notify_go_test_cpp_c1abd8f59e493613(swig_c int, s string) {
 	var _swig_i_0 string
 	swig_p := swigDirectorLookup(swig_c).(*_swig_DirectorICallback)
-	_swig_i_0 = swigCopyString(s)
+ _swig_i_0 = swigCopyString(s) 
 	swig_p.Notify(_swig_i_0)
 }
 
@@ -184,7 +185,6 @@ func (arg1 SwigcptrTestCall) Test(arg2 string) (_swig_ret Int32_t) {
 	var swig_r Int32_t
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	fmt.Println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 	swig_r = (Int32_t)(SwigcptrInt32_t(C._wrap_TestCall_Test_go_test_cpp_c1abd8f59e493613(C.uintptr_t(_swig_i_0), *(*C.swig_type_2)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -193,14 +193,10 @@ func (arg1 SwigcptrTestCall) Test(arg2 string) (_swig_ret Int32_t) {
 }
 
 func (arg1 SwigcptrTestCall) Add(arg2 Uint32_t, arg3 Uint32_t) (_swig_ret Uint32_t) {
-	fmt.Println("aaaaaaaaaaaaaaaaaaaaaaaaa")
 	var swig_r Uint32_t
 	_swig_i_0 := arg1
-	fmt.Println("bbbbbbbbbbbbbbbbbbbbbbbbbb")
 	_swig_i_1 := arg2.Swigcptr()
-	fmt.Println("cccccccccccccccccccccccccc")
 	_swig_i_2 := arg3.Swigcptr()
-	fmt.Println("aaaaaaaaaaaaaaaaaaaaaaaaa")
 	swig_r = (Uint32_t)(SwigcptrUint32_t(C._wrap_TestCall_add_go_test_cpp_c1abd8f59e493613(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))))
 	return swig_r
 }
@@ -218,23 +214,24 @@ type TestCall interface {
 	Add(arg2 Uint32_t, arg3 Uint32_t) (_swig_ret Uint32_t)
 }
 
+
 type SwigcptrInt32_t uintptr
 type Int32_t interface {
-	Swigcptr() uintptr
+	Swigcptr() uintptr;
 }
-
 func (p SwigcptrInt32_t) Swigcptr() uintptr {
 	return uintptr(p)
 }
 
 type SwigcptrUint32_t uintptr
 type Uint32_t interface {
-	Swigcptr() uintptr
+	Swigcptr() uintptr;
 }
-
 func (p SwigcptrUint32_t) Swigcptr() uintptr {
 	return uintptr(p)
 }
+
+
 
 var swigDirectorTrack struct {
 	sync.Mutex
@@ -276,3 +273,5 @@ func swigDirectorDelete(c int) {
 	}
 	delete(swigDirectorTrack.m, c)
 }
+
+

@@ -7,6 +7,6 @@
 #########################################################################
 
 cd cpp && mkdir -p cmake && cd cmake && cmake .. && make && cd ../..
-cd swig && swig -go -cgo -intgosize 64 -c++ ./go_test_cpp.swigcxx && mkdir -p cmake && cd cmake && cmake .. && make && cd ../..
+cd swig && ./gen_go_cpp.sh && mkdir -p cmake && cd cmake && cmake .. && make && cd ../..
 cd go_src && go run main.go
 
